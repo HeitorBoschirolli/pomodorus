@@ -2,6 +2,7 @@
  * IMPORTS
  */
 import React from 'react';
+import Pomodoro from './Pomodoro';
 
 
 /**
@@ -9,6 +10,18 @@ import React from 'react';
  */
 class App extends React.Component
 {
+    /**
+     * I require permission to send notifications to the user.
+     *
+     * :returns: nothing
+     * :rtype: undefined
+     */
+    componentWillMount ()
+    {
+        Notification.requestPermission();
+    }
+
+
     /**
      * I render the application.
      *
@@ -19,6 +32,7 @@ class App extends React.Component
     {
         return (
             <div>
+                <Pomodoro />
             </div>
         );
     }
