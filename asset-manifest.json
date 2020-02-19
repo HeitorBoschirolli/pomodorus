@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/pomodorus/static/js/main.f34f9642.chunk.js",
+    "main.js.map": "/pomodorus/static/js/main.f34f9642.chunk.js.map",
+    "runtime-main.js": "/pomodorus/static/js/runtime-main.c4f155aa.js",
+    "runtime-main.js.map": "/pomodorus/static/js/runtime-main.c4f155aa.js.map",
+    "static/js/2.7bb212c9.chunk.js": "/pomodorus/static/js/2.7bb212c9.chunk.js",
+    "static/js/2.7bb212c9.chunk.js.map": "/pomodorus/static/js/2.7bb212c9.chunk.js.map",
+    "index.html": "/pomodorus/index.html",
+    "precache-manifest.4b99fe4d1ae7e95306e0071401c023dd.js": "/pomodorus/precache-manifest.4b99fe4d1ae7e95306e0071401c023dd.js",
+    "service-worker.js": "/pomodorus/service-worker.js",
+    "static/js/2.7bb212c9.chunk.js.LICENSE.txt": "/pomodorus/static/js/2.7bb212c9.chunk.js.LICENSE.txt",
+    "static/media/352666__foolboymedia__up-chime-2.mp3": "/pomodorus/static/media/352666__foolboymedia__up-chime-2.0be7d612.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4f155aa.js",
+    "static/js/2.7bb212c9.chunk.js",
+    "static/js/main.f34f9642.chunk.js"
+  ]
+}
