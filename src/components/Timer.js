@@ -15,11 +15,27 @@ class Timer extends React.Component
      */
     formatTime ()
     {
-        const hours = ('0' + this.props.hours).slice(-2);
-        const minutes = ('0' + this.props.minutes).slice(-2);
-        const seconds = ('0' + this.props.seconds).slice(-2);
+        const hours = this.formatTimeUnit(this.props.hours);
+        const minutes = this.formatTimeUnit(this.props.minutes);
+        const seconds = this.formatTimeUnit(this.props.seconds);
 
         return `${hours}:${minutes}:${seconds}`;
+    }
+
+
+    /**
+     * I format a unit of time (e.g. hours, minutes, seconds) to a printable
+     * string with two digits.
+     *
+     * :param unit: the unit of time to be formatted
+     * :type  unit: number
+     *
+     * :returns: the formated unit of time
+     * :rtype: string
+     */
+    formatTimeUnit (unit)
+    {
+        return ('0' + Math.floor(unit).toString()).slice(-2)
     }
 
 
