@@ -77,10 +77,7 @@ class Pomodoro extends React.Component
             step: 0,
             hours: DURATIONS.get(CICLE[0]).hours,
             minutes: DURATIONS.get(CICLE[0]).minutes,
-            seconds: DURATIONS.get(CICLE[0]).seconds,
-            // FIXME: remove this from state. No need to update the component
-            // if this changes.
-            tensOfSeconds: 0
+            seconds: DURATIONS.get(CICLE[0]).seconds
         };
 
         // date marking the last time the timer as updated
@@ -196,8 +193,7 @@ class Pomodoro extends React.Component
                 step: 0,
                 hours: DURATIONS.get(CICLE[0]).hours,
                 minutes: DURATIONS.get(CICLE[0]).minutes,
-                seconds: DURATIONS.get(CICLE[0]).seconds,
-                tensOfSeconds: 0
+                seconds: DURATIONS.get(CICLE[0]).seconds
             });
             return;
         }
@@ -207,8 +203,7 @@ class Pomodoro extends React.Component
             step: this.state.step + 1,
             hours: DURATIONS.get(CICLE[this.state.step + 1]).hours,
             minutes: DURATIONS.get(CICLE[this.state.step + 1]).minutes,
-            seconds: DURATIONS.get(CICLE[this.state.step + 1]).seconds,
-            tensOfSeconds: 0
+            seconds: DURATIONS.get(CICLE[this.state.step + 1]).seconds
         });
     }
 
@@ -230,8 +225,7 @@ class Pomodoro extends React.Component
             step: 0,
             hours: DURATIONS.get(CICLE[0]).hours,
             minutes: DURATIONS.get(CICLE[0]).minutes,
-            seconds: DURATIONS.get(CICLE[0]).seconds,
-            tensOfSeconds: 0
+            seconds: DURATIONS.get(CICLE[0]).seconds
         });
     }
 
@@ -254,7 +248,6 @@ class Pomodoro extends React.Component
                     hours={this.state.hours}
                     minutes={this.state.minutes}
                     seconds={this.state.seconds}
-                    tensOfSeconds={this.state.tensOfSeconds}
                     onStartClick={() => {this.onStartClick()}}
                     onStopClick={() => {this.onStopClick()}}
                     onResetClick={() => {this.onResetClick()}}
