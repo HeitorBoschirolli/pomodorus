@@ -24,6 +24,22 @@ class Timer extends React.Component
 
 
     /**
+     * I format a unit of time (e.g. hours, minutes, seconds) to a printable
+     * string with two digits.
+     *
+     * :param unit: the unit of time to be formatted
+     * :type  unit: number
+     *
+     * :returns: the formated unit of time
+     * :rtype: string
+     */
+    formatTimeUnit (unit)
+    {
+        return ('0' + Math.floor(unit).toString()).slice(-2)
+    }
+
+
+    /**
      * I handle the 'start' button click.
      */
     onStartClick ()
