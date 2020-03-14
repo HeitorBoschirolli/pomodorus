@@ -83,6 +83,9 @@ class Pomodoro extends React.Component
             tensOfSeconds: 0
         };
 
+        // date marking the last time the timer as updated
+        this.lastUpdated = null;
+
         // a 'null' interval means there's no timer running
         this.interval = null;
 
@@ -103,6 +106,7 @@ class Pomodoro extends React.Component
     {
         clearInterval(this.interval);
         this.interval = null;
+        this.lastUpdated = null;
     }
 
 
@@ -123,51 +127,43 @@ class Pomodoro extends React.Component
         // timer not yet running: start it and update it every 100 milliseconds
         this.interval = setInterval(() =>
         {
-            // timer completed: update step and return
-            if (this.state.tensOfSeconds === 0
-                && this.state.seconds === 0
-                && this.state.minutes === 0
-                && this.state.hours === 0)
+            // get current date
+            const current = new Date();
+
+            // initialize time elapsed (in seconds) since last update
+            let elapsed;
+
+            // timer was not updated before: time elapsed is zero
+            if (this.lastUpdated === null)
+                elapsed = 0;
+
+            // timer was updated before: time elapsed is the time since last
+            // update
+            else
+                elapsed = (current - this.lastUpdated) / 1000;
+
+            // update the date of the last timer update
+            this.lastUpdated = current;
+
+            // get the time displayed in the timer in seconds
+            const oldSeconds = this.state.hours * 3600 + this.state.minutes * 60 + this.state.seconds;
+
+            // get the updated time of the timer in seconds
+            const newSeconds = Math.max(oldSeconds - elapsed, 0);
+
+            // timer complete: update step and return
+            if (Math.round(newSeconds) === 0)
             {
                 this.onTimerCompleted();
-                return;
+                return
             }
 
-            // current second not over: subtract 1 from tensOfSeconds
-            if (this.state.tensOfSeconds > 0)
-            {
-                this.setState({tensOfSeconds: this.state.tensOfSeconds - 1});
-            }
-
-            // current second is over: go to the beginning of previous second
-            else if (this.state.seconds > 0)
-            {
-                this.setState({
-                    tensOfSeconds: 9,
-                    seconds: this.state.seconds - 1
-                });
-            }
-
-            // current minute is over: go to the beginning of previous minute
-            else if (this.state.minutes > 0)
-            {
-                this.setState({
-                    tensOfSeconds: 9,
-                    seconds: 59,
-                    minutes: this.state.minutes - 1
-                });
-            }
-
-            // current hour is over: go to the beginning of the previous hour
-            else if (this.state.hours > 0)
-            {
-                this.setState({
-                    tensOfSeconds: 9,
-                    seconds: 59,
-                    minutes: 59,
-                    hours: this.state.hours - 1
-                });
-            }
+            // update timer
+            this.setState({
+                hours: Math.floor(newSeconds / 3600),
+                minutes: Math.floor((newSeconds % 3600) / 60),
+                seconds: newSeconds % 60
+            });
         }, 100);
     }
 
@@ -191,6 +187,7 @@ class Pomodoro extends React.Component
         // cancel the current interval
         clearInterval(this.interval);
         this.interval = null;
+        this.lastUpdated = null;
 
         // all steps are over: go to first step and return
         if (this.state.step + 1 === CICLE.length)
