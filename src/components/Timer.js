@@ -15,9 +15,9 @@ class Timer extends React.Component
      */
     formatTime ()
     {
-        const hours = ('0' + this.props.hours).slice(-2);
-        const minutes = ('0' + this.props.minutes).slice(-2);
-        const seconds = ('0' + this.props.seconds).slice(-2);
+        const hours = this.formatTimeUnit(this.props.hours);
+        const minutes = this.formatTimeUnit(this.props.minutes);
+        const seconds = this.formatTimeUnit(this.props.seconds);
 
         return `${hours}:${minutes}:${seconds}`;
     }
